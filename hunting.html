@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'>
+    //this link is jQuery libary
+    </script>
+  </head>
+  <body>
+  <button id="button">View My Git Name</button>
+  <div id="name">
+
+  </div>
+    <script>
+      // $.get("https://api.github.com/users/Zainab-Kalief", function(data) {
+      //   console.log(data.name);
+      //   var button = document.getElementById('button')
+      //   button.addEventListener('click', function() {
+      //     let name = document.createElement('p')
+      //     name.innerHTML = data.name
+      //     document.getElementById('name').appendChild(name)
+      //   })
+      // })
+
+
+      function get_stuff(resolve, reject) {
+        var data = 'wheeee'
+        if (typeof(resolve) == 'function') {
+          data = $.get("https://api.github.com/users/Zainab-Kalief")
+          resolve(data)
+        }
+        return data
+      }
+
+      function x() {
+        var value = new Promise(function(resolve, reject) {
+          get_stuff(resolve, reject)
+        }).then(function(data) {
+          var button = document.getElementById('button')
+          button.addEventListener('click', function() {
+          let name = document.createElement('p')
+          name.innerHTML = data.name
+          document.getElementById('name').appendChild(name)
+            }) }).catch(function() {
+          console.log('failure');
+        })
+      }
+      x()
+
+
+
+    </script>
+  </body>
+</html>
