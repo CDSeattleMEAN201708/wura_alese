@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+		/* border and styling for table data */
+		td{
+			border: 1px solid silver;
+			text-align: center;
+			width: 40px;
+			height: 40px;
+		}
+		/* background and bolding for the first element of our rows and data */
+		td:first-child, tr:first-child{
+			background-color: silver;
+			font-weight: bold;
+		}
+	</style>
+  </head>
+  <body>
+    <div id="target">
+
+    </div>
+    <script>
+      function draw_table() {
+
+        let table = document.createElement('table')
+        table.setAttribute("id", "top")
+        document.getElementById('target').appendChild(table)
+
+        let head = document.createElement('tr')
+        head.setAttribute("id", "table_head")
+        document.getElementById('top').appendChild(head)
+        for (var i = 0; i < 13; i++) {
+          if (i === 0) {
+            continue
+          } else {
+            let td = document.createElement('th')
+            td.innerHTML = i
+            document.getElementById('table_head').appendChild(td)
+          }
+        }
+
+        for (var i = 0; i < 13; i++) {
+
+          let tr = document.createElement('tr')
+          tr.setAttribute('class', 'table_row')
+          document.getElementById('top').appendChild(tr)
+
+            for (var j = 0; j < 13; j++) {
+              if (i == 0 || j == 0) {
+                continue
+              } else {
+                let td = document.createElement('td')
+                td.innerHTML = i * j
+                document.getElementsByClassName('table_row')[i].appendChild(td)
+              }
+            }
+        }
+      }
+
+      //extra
+      draw_table()
+
+      console.log(magic);
+      var magic = 'wonderrrrrrrr'
+      //The program reads all decearations first before carrying out assignment or calling functions. So if we try to print a variable before its declaration
+      //it will read as undefined, but if we print after we delcared it will print the variable value. If we print a let before assignment we get error
+
+
+      var foo
+      function magic_2() {
+        var foo
+        foo = 'Hello World'
+        console.log(foo);
+      }
+      foo = 'bar'
+      magic_2()
+      console.log(foo);
+
+
+      magical()  //THIS IS WRONG
+      var magical = function(){
+        console.log('Will you work');
+      }
+
+
+
+    call_before_dec()  //THIS IS RIGHT 
+    function call_before_dec() {
+      console.log('Im aliveeeeeee');
+    }
+    </script>
+  </body>
+</html>

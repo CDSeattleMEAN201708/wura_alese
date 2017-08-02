@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <button id="button">Click Me</button>
+  <p id="text_hover">Some hover</p>
+    <script>
+    var $dojo = (function(value) {
+      return {
+        name: 'Wurry',
+        click: function () {
+          value.addEventListener('click', function() {  alert('successful')  })
+        },
+        hover: function() {
+          value.addEventListener('mouseover', function() {  setTimeout(function() {alert('now overing')}, 500)  })
+        }
+      }
+    })
+    console.log($dojo('..').name);
+    $dojo(document.getElementById('button')).click();
+    $dojo(document.getElementById('text_hover')).hover();
+    </script>
+  </body>
+</html>
