@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+      $(document).ready( function () {
+        var socket = io.connect()
+        var name = prompt('Join the conversation with the cool kids \nYour name:')
+        if (name != null) {
+          socket.emit('join_chat', {user: name}) //1
+        }
+
+        socket.on('chat_room', function (data) { //4
+          let title = document.createElement('h2')
+          title.innerHTML = 'conversation board'
+          document.getElementById('room').appendChild(title)
+
+          let text = document.createElement('textarea')
+          text.name = 'text'
+          let submit = document.createElement('input')
+          submit.type = 'submit'
+          submit.value = 'post message'
+          document.getElementById('txt').appendChild(text)
+          document.getElementById('txt').appendChild(submit)
+          for(var key in data.data) {
+            if (data.data[key].length > 1) {
+              let new_p = document.createElement('p')
+              new_p.innerHTML = `${data.data[key][0]} said: ${data.data[key][1][0].value}`
+              document.getElementById('room').appendChild(new_p)
+            }
+          }
+        })
+
+      $('form').submit(function () {
+        socket.emit('posting_form', {post_data: $(this).serializeArray()}) //5
+        return false
+      })
+
+      socket.on('new_data', function (data) { //8.1
+        let new_p = document.createElement('p')
+        new_p.innerHTML = `${data.data[0]} said: ${data.data[1][0].value}`
+        document.getElementById('room').appendChild(new_p)
+      })
+      socket.on('user_data', function (data) { //8.2
+        let new_p = document.createElement('p')
+        new_p.innerHTML = `${data.data[0]} said: ${data.data[1][0].value}`
+        document.getElementById('room').appendChild(new_p)
+      })
+
+      })
+    </script>
+  </head>
+  <body>
+    <div id="room">
+
+    </div>
+    <form action="" method="post" id="txt">
+
+    </form>
+  </body>
+</html>
