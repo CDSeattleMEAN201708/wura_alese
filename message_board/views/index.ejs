@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2>The Dojo Board</h2>
+    <form action="/post_message" method="post">
+      Name: <input type="text" name="name"><p></p>
+      Message: <textarea name="message" rows="8" cols="80"></textarea><p></p>
+      <input type="submit" name="" value="Post Message">
+    </form>
+    <% for(var i=0; i < users.length; i++){ %>
+    <h3>Name: <%= users[i].name %></h3>
+    <% for (var j = 0; j < users[i].messages.length; j++) { %>
+      <h3>Message: <%= users[i].messages[j].text %>   </h3>
+      <% for (var k = 0; k < users[i].messages[j].comments.length; k++) { %>
+        <p><%= users[i].messages[j].comments[k].user %> said: <%= users[i].messages[j].comments[k].text %> </p>
+      <% } %>
+      <form action= "/post_comment/<%= users[i].messages[j]._id %>" method="post">
+      Name:
+      <input type="text" name="user"><p></p>
+      Comment:
+      <textarea name="comment" rows="3" cols="70"></textarea><p></p>
+        <input type="submit" name="" value="comment">
+      </form>
+    <% } %>
+    <% } %>
+  </body>
+</html>
