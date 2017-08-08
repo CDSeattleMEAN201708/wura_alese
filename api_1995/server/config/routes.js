@@ -1,15 +1,7 @@
 var names = require('../controllers/name_methods.js')
 module.exports = function (app) {
-  app.get('/', (request, response) => {
-    names.show(request, response)
-  })
-  app.get('/new/:name/', (request, response) => {
-    names.create(request, response)
-  })
-  app.get('/remove/:name/', (request, response) => {
-    names.remove(request, response)
-  })
-  app.get('/:name', (request, response) => {
-    names.show_one(request, response)
-  })
+  app.get('/', names.show)
+  app.get('/new/:name/', names.create)
+  app.get('/remove/:name/', names.remove)
+  app.get('/:name', names.show_one)
 }
