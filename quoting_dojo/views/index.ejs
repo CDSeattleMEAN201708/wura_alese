@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Welcome to Quoting Dojo</h1>
+    <form action="/process" method="post">
+      Name: <input type="text" name="name"><p></p>
+      Quote: <textarea name="quote" rows="8" cols="80"></textarea><p></p>
+      <input type="submit" name="" value="Add my Quote">
+    </form>
+    <% if (errors != ''){ %>
+      <% for (var x in errors) { %>
+        <%= errors[x].message %>
+      <% } %>
+    <% } %>
+    <button><a href="/skip">Skip to quotes</a></button>
+  </body>
+</html>
