@@ -1,0 +1,19 @@
+<p>
+  task works!
+</p>
+
+<table>
+  <tr>
+    <th>Email</th>
+    <th>Importance</th>
+    <th>Subject</th>
+    <th>Content</th>
+  </tr>
+  <tr *ngFor='let data of myEmails'>
+    <td>{{data.email}}</td>
+    <td *ngIf='data.status'>High</td>
+    <td *ngIf='!data.status'>Low</td>
+    <td>{{data.subject}}</td>
+    <td>{{data.conent}}</td>
+  </tr>
+</table>

@@ -1,0 +1,24 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!
+  </h1>
+  <table>
+    <tr>
+      <th>Email</th>
+      <th>Importance</th>
+      <th>Subject</th>
+      <th>Content</th>
+    </tr>
+    <tr *ngFor='let data of dojo_mail'>
+      <td>{{data.email}}</td>
+      <td *ngIf='data.status'>High</td>
+      <td *ngIf='!data.status'>Low</td>
+      <td>{{data.subject}}</td>
+      <td>{{data.conent}}</td>
+    </tr>
+  </table>
+</div>
+
+<app-task [myEmails]='dojo_mail'></app-task>
+<app-note></app-note>

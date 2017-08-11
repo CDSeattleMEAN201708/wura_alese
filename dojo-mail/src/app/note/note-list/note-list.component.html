@@ -1,0 +1,8 @@
+<p>
+  note-list works!
+</p>
+<h5>Note List Component</h5>
+<!-- Below: so if i change the parent data, this child data myNotes changes automatically -->
+<!-- BUT: if the myNotes changes here in the child, it wont affect the parent -->
+<p>{{myNotes | json}}</p>
+<button (click)='callParent()'>Click Me</button>

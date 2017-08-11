@@ -1,0 +1,10 @@
+<p>
+  note works!
+</p>
+<h3>Note Component</h3>
+<p>{{notes | json}}</p>
+<!-- Below: means that we are binding the notes list above with the myNotes property below which will be reflected in app-note-list  -->
+<app-note-list [myNotes]='notes' (myEvent)='invoked($event)'>
+                     <!-- myEvent when being called from the child triggers the function invoked by calling it   -->
+                     <!-- $event means Im expecting a vlaue  -->
+</app-note-list>
