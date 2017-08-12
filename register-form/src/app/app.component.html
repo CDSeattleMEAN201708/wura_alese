@@ -1,0 +1,65 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!
+  </h1>
+  <p *ngIf='status == true'>Thank you for registering with us {{user.first_name}}. We just sent an email confirmation to {{user.email}} and we mailed you at {{user.address}}, {{user.state}}</p>
+  <form (submit)='on_submit()' #formData='ngForm'>
+    First Name: <input
+    type="text"
+    name="first_name"
+    required
+    minlength='2'
+    [(ngModel)]='user.first_name'
+    #first_name='ngModel'
+    >  <span *ngIf='first_name.invalid'>You name should be valid</span><p></p>
+    Last Name: <input
+    type="text"
+    name="last_name"
+    required
+    minlength='3'
+    [(ngModel)]='user.last_name'
+    #last_name='ngModel'
+    ><p></p>
+    Email: <input
+    type="text"
+    name="email"
+    required
+    minlength='3'
+    [(ngModel)]='user.email'
+    #email='ngModel'
+    >  <span *ngIf='email.invalid'>You email must be valid</span> <p></p>
+    Password: <input
+    type="text"
+    name="password"
+    required
+    pattern='^([a-zA-Z0-9@*#.,]{5,20})$'
+    [(ngModel)]='user.password'
+    #password='ngModel'
+    >  <span *ngIf='password.invalid'>You password must be legit</span> <p></p>
+    Password Confirm: <input
+    type="text"
+    name="password_confirm"
+    required
+    pattern='^([a-zA-Z0-9@*#.,]{5,20})$'
+    [(ngModel)]='password_confirm'
+    > <span *ngIf='user.password != password_confirm'>You password must match</span><p></p>
+    Address: <input
+    type="text"
+    name="address"
+    required
+    minlength='3'
+    [(ngModel)]='user.address'
+    #address='ngModel'
+    ><p></p>
+    State:<select name="state" [(ngModel)]='user.state' required>
+      <option>Alaska</option>
+      <option>New York</option>
+      <option>Maryland</option>
+      <option>Chicago</option>
+    </select><p></p>
+    <input type="submit" value="Submit" [disabled]='formData.invalid'>
+
+  </form>
+
+</div>
