@@ -1,0 +1,12 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!
+  </h1>
+  <button *ngFor='let x of boxes, let ind = index' (click)='on_click(ind)' [ngClass]="{'green': x, 'red': x==false}">
+<span *ngIf='x'>ON</span>
+<span *ngIf='!x'>OFF</span>
+</button>
+
+
+</div>
