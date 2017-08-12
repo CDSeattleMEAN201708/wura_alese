@@ -1,0 +1,7 @@
+<div *ngFor='let quote of myQuotes, let ind = index'>
+  <p><strong>{{quote.author}}</strong> said {{quote.content}}</p>
+  <h2>+ {{quote.votes}}</h2>
+  <button (click)='up_vote(ind)'>Vote Up</button>
+  <button (click)='down_vote(ind)'>Vote Down</button>
+  <button (click)='delete_quote(ind)'>Delete</button>
+</div>

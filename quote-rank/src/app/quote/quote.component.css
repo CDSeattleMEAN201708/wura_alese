@@ -1,0 +1,9 @@
+div p, div h2{
+  display: inline-block;
+  margin: 10px;
+}
+div{
+  border: 2px dashed black;
+  padding: 10px;
+  margin: 5px;
+}

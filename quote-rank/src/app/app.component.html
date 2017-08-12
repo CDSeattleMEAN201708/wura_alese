@@ -1,0 +1,29 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!
+  </h1>
+  <form (submit)='add_quote()' #form_data='ngForm'>
+    <textarea
+    name="quote"
+    rows="8"
+    cols="80"
+    required
+    minlength = '4'
+    [(ngModel)]='quote.content'
+    #quote_errors='ngModel'
+    ></textarea><p *ngIf='quote_errors.invalid'>Quote is required</p>
+    <input
+    type="text"
+    name="author"
+    required
+    minlength = '1'
+    [(ngModel)]='quote.author'
+    #author_errors='ngModel'
+    ><p *ngIf='quote_errors.invalid'>Author is required</p>
+    <input type="submit" value="Add a Quote" [disabled]='form_data.invalid'>
+  </form>
+
+
+  <app-quote [myQuotes]='quotes'></app-quote>
+</div>
