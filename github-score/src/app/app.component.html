@@ -1,0 +1,19 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!
+  </h1>
+  <form (submit)='get_user()'>
+    Github Username: <input
+    type="text"
+    name="userr"
+    [(ngModel)]='username'
+    #user_check='ngModel'
+    >
+    <input type="submit" name="" value="Calculate my github score">
+  </form>
+  <h2 *ngIf='status == true'>{{user}} score: {{score}}</h2>
+  <p *ngIf='status == true'>{{message}}</p>
+  <h2 *ngIf='status == false'>This user doesnt exist</h2>
+
+</div>
