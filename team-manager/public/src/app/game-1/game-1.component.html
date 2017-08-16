@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <th>Team Name</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor='let player of all_players, let ply_ind = index'>
+    <td>{{player.name}}</td>
+    <td *ngFor='let box of player.boxes, let bx_ind = index'>
+      <button *ngIf='box.color == "red"' (click)='on_click(ply_ind, bx_ind)' [ngClass]="{'red': box.status}">{{box.name}}</button>
+      <button *ngIf='box.color == "yellow"' (click)='on_click(ply_ind, bx_ind)'  [ngClass]="{'yellow': box.status}">{{box.name}}</button>
+      <button *ngIf='box.color == "green"' (click)='on_click(ply_ind, bx_ind)'  [ngClass]="{'green': box.status}">{{box.name}}</button>
+    </td>
+  </tr>
+</table>
