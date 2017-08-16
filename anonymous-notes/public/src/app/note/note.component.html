@@ -1,0 +1,19 @@
+<form (submit)='send_data()' #form_data='ngForm'>
+  Note: <textarea
+  name="note"
+  required
+  minlength='4'
+  [(ngModel)]='note.note'
+  #note_validation='ngModel'
+  ></textarea><span *ngIf='note_validation.invalid'>Enter a note about 4 xters</span>
+  <br>
+  Name: <input
+  type="text"
+  name="user"
+  [(ngModel)]='note.user'
+  #user_validation='ngModel'
+  >
+  <input type="submit" value="Add Note" [disabled]='form_data.invalid'>
+</form>
+
+  <p *ngFor='let note of all_notes.reverse()'>{{note.note}} by {{note.user}} at {{note.createdAt | date: 'longDate'}}</p>
