@@ -1,0 +1,6 @@
+<div *ngFor='let product of _productService.products'>
+  <h3><strong>{{product.name}}</strong></h3>
+  <h4>${{product.price}}</h4>
+  <button><a [routerLink]="['/edit', product.id]">Edit</a></button>
+  <button (click)='status = true'><a [routerLink]="['/delete', product.id]">Delete</a></button>
+</div>

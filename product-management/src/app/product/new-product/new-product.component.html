@@ -1,0 +1,22 @@
+
+<form #formData='ngForm' (submit)='create_product()' >
+  <h2>Create a New Product</h2>
+  Title: <input
+  type="text"
+  name='title'
+  required
+  minlength='4'
+  [(ngModel)]='product.name'
+  #title_check='ngModel'
+   ><br>
+  Price: <input
+  type="text"
+  name='price'
+  required
+  [(ngModel)]='product.price'
+  #price_check='ngModel'
+  ><br>
+  Image Url: <input type="text" ><br>
+  <input type="submit" value="Create" [disabled]='formData.invalid'>
+  <a [routerLink]="['pre']">Go Back</a>
+</form>
