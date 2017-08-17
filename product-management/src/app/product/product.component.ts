@@ -27,5 +27,8 @@ export class ProductComponent implements OnInit {
       })
     }
   }
+  confirm_this() {
+    confirm("Are you sure you want to do that?")
+  }
 
 }

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ProductService } from './product.service'
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
@@ -25,6 +26,7 @@ import { EditProductComponent } from './product/edit-product/edit-product.compon
     FormsModule,
     HttpModule
   ],
+
   providers: [ProductService],
   bootstrap: [AppComponent]
 })

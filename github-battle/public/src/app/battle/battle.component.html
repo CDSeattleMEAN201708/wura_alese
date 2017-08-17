@@ -1,0 +1,47 @@
+<div *ngIf='main'>
+  <h2>Player 1</h2>
+  <form *ngIf='form1.status' (submit)='on_click_1()'>
+    Github Username: <input
+    type="text"
+    name="name"
+    required
+    [(ngModel)]='git_user_1'
+    #user_validation='ngModel'
+    >
+    <input type="submit" value="Get User" [disabled]='user_validation.invalid'>
+  </form>
+
+  <p *ngIf='user[0].status'>{{user[0].name}}</p>
+  <p *ngIf='error[0].status'>{{error[0].message}}</p>
+  <img *ngIf='user[0].status' src="{{user[0].image}}" alt="git_user">
+
+</div>
+
+<div *ngIf='main'>
+  <h2>Player 2</h2>
+  <form *ngIf='form2.status' (submit)='on_click_2()'>
+    Github Username: <input
+    type="text"
+    name="name"
+    required
+    [(ngModel)]='git_user_2'
+    #user_validation_2='ngModel'
+    >
+    <input type="submit" value="Get User" [disabled]='user_validation_2.invalid'>
+  </form>
+  <p *ngIf='user[1].status'>{{user[1].name}}</p>
+  <p *ngIf='error[1].status'>{{error[1].message}}</p>
+  <img *ngIf='user[1].status' src="{{user[1].image}}" alt="git_user">
+
+</div>
+
+<button *ngIf='button' (click)='git_battle()'>BATTLE</button>
+
+<section *ngIf='battle'>
+  <div>
+    <h2>First Place: {{this.winner.name}} with {{this.winner.score}}</h2>
+    <h2>Loser: {{this.loser.name}} with {{this.loser.score}}</h2>
+  </div>
+  <img src="{{this.winner.image}}" alt="git">
+  <button (click)='go_home()'> Reset</button>
+</section>

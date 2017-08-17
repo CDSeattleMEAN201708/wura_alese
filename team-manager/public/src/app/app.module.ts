@@ -11,7 +11,8 @@ import { ListComponent } from './list/list.component'
 import { Game1Component } from './game-1/game-1.component'
 import { AddPlayerComponent } from './add-player/add-player.component'
 
-import { GameService } from './game.service'
+import { GameService } from './game.service';
+import { ConfirmComponent } from './confirm/confirm.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { GameService } from './game.service'
     StatusComponent,
     ListComponent,
     Game1Component,
-    AddPlayerComponent
+    AddPlayerComponent,
+    ConfirmComponent
   ],
   imports: [
     BrowserModule,
