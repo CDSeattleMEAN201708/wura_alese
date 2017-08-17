@@ -1,0 +1,22 @@
+<div>
+  <h1>Create Listing</h1>
+  <form #formData='ngForm' (submit)='on_submit()'>
+    Title: <input type="text" name="title" required [(ngModel)]='bike.title'><p></p>
+    Price: <input type="text" name="price" required [(ngModel)]='bike.price'><p></p>
+    Description: <textarea name="description" rows="8" cols="80" required [(ngModel)]='bike.description'></textarea><p></p>
+    Location: <input type="text" name="location" required [(ngModel)]='bike.location'><p></p>
+    <input type="submit" value="Create" [disabled]='formData.invalid'>
+  </form>
+</div>
+<div *ngFor='let bike of user_bikes, let ind = index' (submit)='update(ind)'>
+  <form >
+    Title: <input type="text" name="title" required [(ngModel)]='bike.title'><p></p>
+    Price: <input type="text" name="price" required [(ngModel)]='bike.price'><p></p>
+    Description: <textarea name="description" rows="8" cols="80" required [(ngModel)]='bike.description'></textarea><p></p>
+    Location: <input type="text" name="location" required [(ngModel)]='bike.location'><p></p>
+    <input type="submit" value="Update">
+    <button>Delete</button>
+  </form>
+
+
+</div>

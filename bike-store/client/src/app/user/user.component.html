@@ -1,0 +1,27 @@
+<div>
+  <h1>Sign Up</h1>
+  <form  (submit)='post_data()' #form_data='ngForm'>
+    First Name: <input [(ngModel)]='user.first_name' type="text" name="first_name" required><p></p>
+    Last Name: <input [(ngModel)]='user.last_name' type="text" name="last_name" required><p></p>
+    Email: <input [(ngModel)]='user.email' type="email" name="email" required><p></p>
+    Password: <input [(ngModel)]='user.password' #password='ngModel' type="text" name="password"
+    required pattern='^([a-zA-Z0-9@*#.,]{5,20})$'>
+    <span *ngIf='password.invalid'>Your password is invalid</span>
+    <p></p>
+    Confirm PS: <input [(ngModel)]='user.confirm_password' type="text" name="confirm_password"
+    required pattern='^([a-zA-Z0-9@*#.,]{5,20})$' match='user.password'>
+
+    <p></p>
+    <input type="submit" value="Sign Up" [disabled]='form_data.invalid' >
+    <p *ngFor='let error of errors'>{{error}}</p>
+  </form>
+</div>
+<div>
+  <h1>Log In</h1>
+  <form #formData='ngForm' (submit)='validate_user()'>
+    Email: <input type="text" name="email" required [(ngModel)]='log_user.email'><p></p>
+    Password: <input type="text" name="password" required [(ngModel)]=log_user.password><p></p>
+    <input type="submit" value="Log In" [disabled]='formData.invalid'>
+    <p>{{log_in_error}}</p>
+  </form>
+</div>
