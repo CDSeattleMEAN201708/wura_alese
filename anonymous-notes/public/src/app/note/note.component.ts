@@ -15,7 +15,12 @@ export class NoteComponent implements OnInit {
 
   ngOnInit() {
     this.my_service.retrieve_notes()
-    .then(data => this.all_notes = data)
+    .then(data => {
+      this.all_notes = data
+      for(let note of this.all_notes) {
+        note.short_time = `${new Date(note.createdAt).getHours()}:${new Date(note.createdAt).getMinutes()}`
+      }
+    })
     .catch(errors => console.log(errors))
   }
 
@@ -23,7 +28,7 @@ export class NoteComponent implements OnInit {
   send_data() {
     //use service first if you arent coming from a route but going from passing data to a route
     this.my_service.create(this.note)
-    .then( data => this.all_notes.push(data))
+    .then( data => this.all_notes.unshift(data))
     .catch( errors => {console.log(errors)})
     this.note = new Note
   }

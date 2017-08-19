@@ -1,0 +1,21 @@
+<h3><a [routerLink]="['/browse']">Browse</a></h3>
+<h3><a [routerLink]="['/listing']">My Listing</a></h3>
+<button (click)='log_out_user()'>Log Out</button>
+
+<div>
+  <form (submit)='post_data()'>
+    Title: <input type="text" name="title" [(ngModel)]='bike.title'>
+    Description: <textarea name="description" rows="6" cols="60" [(ngModel)]='bike.description'></textarea>
+    <input type="submit" value="Add Bike">
+  </form>
+</div>
+<p>Hey {{user}}</p>
+<div *ngFor='let bike of my_bikes, let ind = index'>
+  <form (submit)='update(bike._id, ind)'>
+    Title: <input type="text" name="title" [(ngModel)]='bike.title'><p></p>
+    Description: <textarea name="description" rows="6" cols="60" [(ngModel)]='bike.description'></textarea><p></p>
+    <input type="submit" value="Update">
+    <button (click)='delete(bike._id, ind)'>Delete</button>
+    <hr>
+  </form>
+</div>

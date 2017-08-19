@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { NoteComponent } from './note/note.component';
 
 import { MyServiceService } from './my-service.service';
-import { AllNotesComponent } from './all-notes/all-notes.component'
+import { AllNotesComponent } from './all-notes/all-notes.component';
+import { OrderPipe } from './order.pipe'
 
 @NgModule({
   declarations: [
     AppComponent,
     NoteComponent,
-    AllNotesComponent
+    AllNotesComponent,
+    OrderPipe
   ],
   imports: [
     BrowserModule,

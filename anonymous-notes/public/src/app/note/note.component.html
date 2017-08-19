@@ -16,4 +16,4 @@
   <input type="submit" value="Add Note" [disabled]='form_data.invalid'>
 </form>
 
-  <p *ngFor='let note of all_notes.reverse()'>{{note.note}} by {{note.user}} at {{note.createdAt | date: 'longDate'}}</p>
+  <p *ngFor='let note of all_notes | order'>{{note.note}} by {{note.user}} at {{note.createdAt | date}}  {{note.short_time}}</p>

@@ -1,0 +1,23 @@
+<h3><a [routerLink]="['/browse']">Browse</a></h3>
+<h3><a [routerLink]="['/listing']">My Listing</a></h3>
+<button (click)='log_out_user()'>Log Out</button>
+<p><input type="search" name="search" [(ngModel)]='search' placeholder="search store"></p>
+
+
+<div *ngFor='let bike of all_bikes2 | filter:search, let ind = index'>
+  <div *ngIf='bike._user == user_id'>
+    <p><strong>{{bike.user}}</strong></p>
+    <p>{{bike.title}} {{bike.createdAt }}</p>
+    <p>{{bike.description}}</p>
+    <button (click)='delete(bike._id, ind)'>Delete</button>
+    <hr>
+  </div>
+  <div *ngIf='bike._user != user_id'>
+    <p><strong>{{bike.user}}</strong></p>
+    <p>{{bike.title}} {{bike.createdAt | date:medium }}</p>
+    <p>{{bike.description}}</p>
+    <button (click)='show_contact(bike.email)'>Contact</button>
+    <p *ngIf='user_contact.status'> {{user_contact.email}}</p>
+    <hr>
+  </div>
+</div>
