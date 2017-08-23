@@ -1,0 +1,17 @@
+
+
+<div>
+  <h2>Register</h2>
+  <form (submit)='sign_up()'>
+    <input type="text" name="name" placeholder="name" [(ngModel)]='user.name'>
+    <input type="text" name="password" placeholder="password" [(ngModel)]='user.password'>
+    <input type="submit" value="Sign Up">
+  </form>
+  <p>{{error}}</p>
+  <h2>Log In</h2>
+  <form (submit)='log_in()'>
+    <input type="text" name="name" placeholder="name" [(ngModel)]='log_user.name'>
+    <input type="text" name="password" placeholder="password" [(ngModel)]='log_user.password'>
+    <input type="submit" value="submit">
+  </form>
+</div>

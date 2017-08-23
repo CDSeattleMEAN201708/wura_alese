@@ -1,0 +1,30 @@
+
+<a [routerLink]="['/browse']">Browse</a>
+<a [routerLink]="['/listing']">My Listing</a>
+<a href="/log_out">Log Out</a>
+
+<div>
+  <p><input type="search" name="search" placeholder="search title" [(ngModel)]='keyword'></p>
+  <select>
+    <option value="">None</option>
+    <option value="low">Low to High</option>
+    <option value="high">High to Low</option>
+  </select>
+</div>
+
+<div *ngFor='let bike of all_bikes | search:keyword , let ind = index'>
+  <div *ngIf='user_id == bike.user_id'>
+    <p>{{bike.title}}   {{bike.price}}</p>
+    <p>{{bike.description}}</p>
+    <p>{{bike.createdAt}}</p>
+    <button (click)='confirm_delete(bike.title, bike.bike_id, ind)' >Delete</button>
+    <hr>
+  </div>
+  <div *ngIf='user_id != bike.user_id'>
+    <p>{{bike.title}}   {{bike.price}}</p>
+    <p>{{bike.description}}</p>
+    <p>{{bike.createdAt}}</p>
+    <button (click)='view_contact(bike.user_name, bike.title)'>Contact</button>
+    <hr>
+  </div>
+</div>

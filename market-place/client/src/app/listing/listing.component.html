@@ -1,0 +1,25 @@
+<a [routerLink]="['/browse']">Browse</a>
+<a [routerLink]="['/listing']">My Listing</a>
+<a href="/log_out">Log Out</a>
+
+<form (submit)='post_data()'>
+  <h3>Create Listing</h3>
+  <input type="text" name="title" placeholder="title" [(ngModel)]='bike.title'><br>
+  <input type="text" name="price" placeholder="price" [(ngModel)]='bike.price'><br>
+  <textarea name="description" rows="4" cols="40" placeholder="description" [(ngModel)]='bike.description'></textarea><br>
+  <input type="submit" value="create">
+</form>
+
+
+<div *ngFor='let bike of bikes, let ind = index'>
+  <p>{{bike.title}}  {{bike.price}}</p>
+  <p>{{bike.description}}</p>
+  <button (click)='open_update_form(ind)'>Update</button>
+  <form *ngIf='status' (submit)='update_data(bike._id, ind)'>
+    <input type="text" name="title" placeholder="title" [(ngModel)]='update_bike.title'><br>
+    <input type="text" name="price" placeholder="price" [(ngModel)]='update_bike.price'><br>
+    <textarea name="description" rows="4" cols="40" placeholder="description" [(ngModel)]='update_bike.description'></textarea><br>
+    <input type="submit" value="submit">
+  </form>
+  <hr>
+</div>
